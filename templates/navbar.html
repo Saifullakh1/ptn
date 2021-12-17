@@ -1,0 +1,51 @@
+{% load static %}
+<!--================ Start header Top Area =================-->
+<section class="header-top">
+    <div class="container box_1170">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <a href="{% url 'data' %}" class="logo">
+                    <img src="{% static 'img/logo.png' %}" alt="">
+                </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 search-trigger">
+                <a href="#" class="search">
+                    <i class="lnr lnr-magnifier" id="search"></i></a>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ End header top Area =================-->
+
+<!-- Start header Area -->
+<header id="header">
+    <div class="container box_1170 main-menu">
+        <div class="row align-items-center justify-content-center d-flex">
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    {% if user.is_authenticated %}
+                        <li class="menu-active"><a href="{% url 'data' %}">Home</a></li>
+                        <li><a href="{% url 'create_data' %}">Create Post</a></li>
+                        <li><a href="{% url 'logout' %}">LogOut</a></li>
+                        <li>| <a href="{% url 'profile' user.id %}">{{ user.username }}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">LogIn</a></li>
+                        <li><a href="{% url 'signup' %}">Registration</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="search_input" id="search_input_box">
+        <div class="container box_1170">
+            <form class="d-flex justify-content-between" action="{% url 'data' %}">
+                <input type="text" name="words" class="form-control" id="search_input" placeholder="Search Here">
+                <button type="submit" name="key_word" class="btn"></button>
+                <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+            </form>
+        </div>
+    </div>
+</header>
+<!-- End header Area -->

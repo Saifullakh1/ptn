@@ -1,0 +1,20 @@
+{% extends 'new_index.html' %}
+{% block content %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="container">
+                {% if profile.image %}
+                <img src="{{ profile.image.url }}" alt="...">
+                {% else %}
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.username }}</h5>
+                    <p class="card-text">{{ profile.nickname }}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
